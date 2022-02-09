@@ -1,0 +1,269 @@
+/* Main */
+html, body { overflow-x: hidden }
+.card-body { padding: 0px !important }
+.error-message { display: none; color: red; text-align: center; background-color: rgba(255,255,255,0.75); padding: 4px; border-radius: 4px }
+a { display: inline-block; text-decoration: underline; color: #333 }
+.image-center { background-size: cover; background-repeat: no-repeat; background-position: center center }
+.option-list { min-width: 250px }
+.option-list > .dropdown { min-height: 1.5em; width: 100%; text-align: start; border-bottom: 2px solid black; padding: 5px 2px 5px 2px; background: url("/images/triangle.svg") no-repeat right 0.5rem bottom 4px/16px; cursor: pointer }
+.dropdown-option-container { border: 2px solid #444; width: 100%; transition: opacity 0.5s }
+.dropdown-option:hover { background-color: #eee }
+.main-view {width: 100%; min-height: 100% }
+.loading-screen-message { position: absolute; transform: translate(-50%, 0px) }
+input,.form-label { background-color: rgba(255,255,255,0.4); border: unset; border-bottom: 2px solid black; padding: 5px 2px 5px 2px }
+.mpx-3 { margin-left: 2%; margin-right: 2% }
+.muted { opacity: .5 }
+input[type="radio"]:hover + label { opacity: .75; cursor: pointer }
+input[type="radio"]:checked + .option { background-color: black; color: #fff }
+.checkbox-list-item:hover + label { cursor: pointer }
+.checkbox-list-item:hover:not(:checked) + label { opacity: .6 }
+.multi-select { background-position: 10px center; background-repeat: no-repeat }
+.checkbox-list-item:not(:checked) + .multi-select { background-image: url("../../images/radio-unchecked.svg"); background-color: #fff !important }
+.checkbox-list-item:checked + .multi-select { background-image: url("../../images/radio-checked.svg") }
+.option { transition: opacity 0.5s; display: inline; border-radius: 5px }
+.checkbox-list-item { display: none }
+.page {transition: opacity 0.2s ease-in-out}
+.page-hide, .d-none, .list-hide {opacity: 0 }
+.page-show {opacity: 1}
+.list-hide label {cursor: unset !important}
+input:focus, button:focus {outline:none; box-shadow: none !important}
+.header, .paragraph { width: 100%; overflow-wrap: break-word }
+.header { margin-bottom: 1rem}
+.paragraph { margin-bottom: .5rem}
+.modal-body.container {overflow-wrap: anywhere}
+.w-30 {width: 30%}
+.w-40 {width: 40%}
+.xform:not(:checked) + label + .form-block { display: none }
+.xform:checked + label { display: none }
+.form-label { width: 100%; min-height: 58px; padding-top: 1.5rem !important; padding-left: 4px !important }
+.form-block { width: 100%; margin-bottom: 0.5em }
+.form-gap { width: 0.5em }
+.form-floating { min-height: 58px }
+.form-floating > input, .form-label { text-align: start !important }
+.image-poster { padding: 1rem 1rem 0px 1rem; display: flex; justify-content: center; align-items: center }
+.image-poster > div, .image-thumbnail > div { background-size: contain !important; width: 570px; height: 480px }
+.image-thumbnail { padding: 1rem }
+.image-top { width: 100%; height: 40% }
+.image-top+div>.content-container {padding: 20px}
+.image-container:not(.image-poster) > div { width: 100%; height: 100% }
+.image-none { width: 0px !important; height: 0px !important; padding: 0 !important }
+.content-bottom { width: 100%; min-height: 60% }
+.content-full { width: 100%; height: 100%; justify-content: center; align-items: center; display: flex }
+.under-button { z-index: 11; opacity: .9 }
+.image-cropped {height: 30% !important}
+.btn-next, .btn-next-fake { z-index: 12 }
+nav {z-index: 20; background-color: rgba(255,255,255,0.7); padding: 0 1rem}
+nav input {width: 60px !important; margin-left: .5rem}
+.spacer { height: 2rem }
+.btn-dev-3 {position: fixed}
+.btn-dev-3.under-button {height: 4em}
+.btn-next-fake { background-color: #fff !important; color: #000 !important; border: 1px solid #000 }
+.space-between { height: 100%; display: flex; flex-direction: column; justify-content: space-between }
+.z-above-all {position: relative; left: 50vw; top: 2px; z-index: 20}
+#app > nav { position: absolute; top: 4px; left: calc(50vw - 230px)}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type=number]{ -webkit-appearance: none; margin-top: 0px; margin-bottom: 0px; -moz-appearance: textfield }
+.legal-modal-body { height: calc(100% - 150px); display: flex; align-items: center; overflow-x: hidden; overflow-y: auto }
+.modal-dialog { align-items: initial !important }
+.modal-content { min-height: 100% }
+#legalModalLabel { width: 80% }
+
+/* Transition screens */
+.transition-screen {background-color: #fff}
+.transition-screen * { animation-fill-mode: forwards !important }
+.transition-screen > div {display: flex; flex-direction: column; justify-content: start; align-items: center }
+.transition-icon { background-repeat: no-repeat}
+.transition-desktop > div { height: 100%; width: 33.4vw; padding-top: 45vh; background-size: 100% 400% }
+.transition-mobile { flex-direction: column; width: 100% }
+.transition-mobile > div { height: 33.4vh; width: 100%; padding-top: 12vh; background-size: 400% 100% }
+.transition-desktop .fall-down { position: absolute; top: -100px; border-radius: 8px; width: 60px; transform: translateY(30%)}
+.transition-mobile .fall-down { position: relative; top: -85px; border-radius: 8px; width: 40px; opacity: 0 }
+.transition-phase-1 > .transition-1 .transition-icon::after, .transition-phase-2 > .transition-2 .transition-icon::after { position: absolute; display: inline-block; content:''; width: 3em; height: 3em; background-color: #34c400; transform: rotate(45deg); left: -100px }
+.transition-phase-1.transition-desktop > div { background-image: linear-gradient(to bottom, #fff 0%, #fff 25%, #f9f9f9 25%, #f9f9f9 50%, #34c400 50%, #34c400 75%, #f9f9f9 75%, #f9f9f9 100%) }
+.transition-phase-1.transition-mobile > div { background-image: linear-gradient(to right, #fff 0%, #fff 25%, #f9f9f9 25%, #f9f9f9 50%, #34c400 50%, #34c400 75%, #f9f9f9 75%, #f9f9f9 100%) }
+.transition-phase-1.transition-desktop > .transition-1 { animation: bg-slide-down var(--tr-anim-speed) var(--tr-step-1), bg-slide-down-extra var(--tr-anim-speed) var(--tr-step-4) }
+.transition-phase-1.transition-desktop > .transition-2 { animation: bg-slide-up var(--tr-anim-speed) var(--tr-step-2)}
+.transition-phase-1.transition-desktop > .transition-3 { animation: bg-slide-down var(--tr-anim-speed) var(--tr-step-3)}
+.transition-phase-1.transition-mobile > .transition-1 { animation: bg-slide-right var(--tr-anim-speed) var(--tr-step-1), bg-slide-right-extra var(--tr-anim-speed) var(--tr-step-4) }
+.transition-phase-1.transition-mobile > .transition-2 { animation: bg-slide-left var(--tr-anim-speed) var(--tr-step-2)}
+.transition-phase-1.transition-mobile > .transition-3 { animation: bg-slide-right var(--tr-anim-speed) var(--tr-step-3)}
+.transition-phase-1.transition-desktop > .transition-1 > .transition-icon { animation: pop-out-desktop var(--tr-anim-speed) var(--tr-step-1), image-swap var(--tr-anim-speed) var(--tr-step-4); background-image: url("../../images/circle-1.svg")}
+.transition-phase-1.transition-desktop > .transition-2 > .transition-icon { animation: pop-out-desktop var(--tr-anim-speed) var(--tr-step-2); background-image: url("../../images/circle-2.svg")}
+.transition-phase-1.transition-desktop > .transition-3 > .transition-icon { animation: pop-out-desktop var(--tr-anim-speed) var(--tr-step-3); background-image: url("../../images/circle-3.svg")}
+.transition-phase-1.transition-mobile > .transition-1 > .transition-icon { animation: pop-out-mobile var(--tr-anim-speed) var(--tr-step-1), image-swap var(--tr-anim-speed) var(--tr-step-4); background-image: url("../../images/circle-1.svg")}
+.transition-phase-1.transition-mobile > .transition-2 > .transition-icon { animation: pop-out-mobile var(--tr-anim-speed) var(--tr-step-2); background-image: url("../../images/circle-2.svg")}
+.transition-phase-1.transition-mobile > .transition-3 > .transition-icon { animation: pop-out-mobile var(--tr-anim-speed) var(--tr-step-3); background-image: url("../../images/circle-3.svg")}
+.transition-phase-1.transition-desktop .fall-down, .transition-phase-2.transition-desktop .fall-down { animation: fall-down var(--tr-anim-speed) var(--tr-step-5) ease-out }
+.transition-phase-1.transition-mobile .fall-down, .transition-phase-2.transition-mobile .fall-down { animation: fade-in var(--tr-anim-speed) var(--tr-step-5) }
+.transition-phase-1.transition-desktop > .transition-1 .transition-icon::after { animation: show-arrow-desktop-1 var(--tr-anim-speed) var(--tr-step-5) forwards }
+.transition-phase-1.transition-mobile > .transition-1 .transition-icon::after { animation: show-arrow-mobile-1 var(--tr-anim-speed) var(--tr-step-5) forwards }
+.transition-phase-1 > .transition-1 > .transition-block { animation: turn-white var(--tr-anim-speed) var(--tr-step-4) }
+.transition-phase-2.transition-desktop > div { background-image: linear-gradient(to bottom, #f9f9f9 0%, #f9f9f9 50%, #34c400 50%, #34c400 100%) }
+.transition-phase-2.transition-mobile > div { background-image: linear-gradient(to right, #f9f9f9 0%, #f9f9f9 50%, #34c400 50%, #34c400 100%) }
+.transition-phase-2.transition-desktop > .transition-1 { background-position: 0 200% }
+.transition-phase-2.transition-desktop > .transition-2 { animation: bg-slide-down var(--tr-anim-speed) var(--tr-step-2)}
+.transition-phase-2.transition-mobile > .transition-1 { background-position: 200% 0 }
+.transition-phase-2.transition-mobile > .transition-2 { animation: bg-slide-right var(--tr-anim-speed) var(--tr-step-2)}
+.transition-phase-2.transition-desktop > .transition-1 > .transition-icon { width: 100px; height: 100px; margin-bottom: 20%; background-image: url("../../images/circle-checkmark.svg")}
+.transition-phase-2.transition-desktop > .transition-2 > .transition-icon { animation: image-swap var(--tr-anim-speed) var(--tr-step-2); width: 100px; height: 100px; margin-bottom: 20%; background-image: url("../../images/circle-2.svg")}
+.transition-phase-2.transition-desktop > .transition-3 > .transition-icon { width: 100px; height: 100px; margin-bottom: 20%; background-image: url("../../images/circle-3.svg")}
+.transition-phase-2.transition-mobile > .transition-1 > .transition-icon { width: 60px; height: 60px; margin-bottom: 10px; background-image: url("../../images/circle-checkmark.svg")}
+.transition-phase-2.transition-mobile > .transition-2 > .transition-icon { animation: image-swap var(--tr-anim-speed) var(--tr-step-2); width: 60px; height: 60px; margin-bottom: 10px; background-image: url("../../images/circle-2.svg")}
+.transition-phase-2.transition-mobile > .transition-3 > .transition-icon { width: 60px; height: 60px; margin-bottom: 10px; background-image: url("../../images/circle-3.svg")}
+.transition-phase-2.transition-desktop > .transition-2 .transition-icon::after { animation: show-arrow-desktop-2 var(--tr-anim-speed) var(--tr-step-3) forwards }
+.transition-phase-2.transition-mobile > .transition-2 .transition-icon::after { animation: show-arrow-mobile-2 var(--tr-anim-speed) var(--tr-step-3) forwards }
+.transition-phase-2 > .transition-2 > .transition-block { animation: turn-white var(--tr-anim-speed) var(--tr-step-2) }
+
+@keyframes bg-slide-down {
+    to {
+        background-position: 0 100vh
+    }
+}
+@keyframes bg-slide-down-extra {
+    to {
+        background-position: 0 200vh
+    }
+}
+@keyframes bg-slide-up {
+    to {
+        background-position: 0 -100vh
+    }
+}
+@keyframes bg-slide-left {
+    to {
+        background-position: -100vw 0
+    }
+}
+@keyframes bg-slide-right {
+    to {
+        background-position: 100vw 0
+    }
+}
+@keyframes bg-slide-right-extra {
+    to {
+        background-position: 200vw 0
+    }
+}
+@keyframes image-swap {
+    to {
+        background-image: url("../../images/circle-checkmark.svg");
+    }
+}
+@keyframes show-arrow-desktop-1 {
+    from {
+        left: calc(33vw - 4.5em)
+    }
+    to {
+        left: calc(33vw - 2em)
+    }
+}
+@keyframes show-arrow-desktop-2 {
+    from {
+        left: calc(67vw - 4.5em)
+    }
+    to {
+        left: calc(67vw - 2em)
+    }
+}
+@keyframes show-arrow-mobile-1 {
+    from {
+        top: calc(33vh - 4.5em);
+        left: calc(50vw - 1em)
+    }
+    to {
+        top: calc(33vh - 2em);
+        left: calc(50vw - 1em)
+    }
+}
+@keyframes show-arrow-mobile-2 {
+    from {
+        top: calc(67vh - 4.5em);
+        left: calc(50vw - 1em)
+    }
+    to {
+        top: calc(67vh - 2em);
+        left: calc(50vw - 1em)
+    }
+}
+@keyframes fall-down {
+    from {
+        top: -100px
+    }
+    to {
+        top: 45vh
+    }
+}
+@keyframes fade-in {
+    to {
+        opacity: 1
+    }
+}
+@keyframes turn-white {
+    to {
+        color: #fff
+    }
+}
+@keyframes pop-out-desktop {
+    from {
+        width: 0px;
+        height: 0px;
+        margin-bottom: 0px;
+        opacity: 0
+    }
+    to {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20%;
+        opacity: 1
+    }
+}
+@keyframes pop-out-mobile {
+    from {
+        width: 0px;
+        height: 0px;
+        margin-bottom: 0px;
+        opacity: 0
+    }
+    to {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+        opacity: 1
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (orientation: landscape){
+    .image-left { width: 50%; min-height: 100% }
+    .content-right { width: 50%; min-height: 100%; justify-content: center; align-items: center; display: flex }
+    .content-right .under-button { display: none }
+    .content-right .btn-next, .content-right .btn-next-fake { width: 100% }
+    .layout-row { flex-direction: row }
+    .layout-column { flex-direction: column }
+    .content-container { padding: 20px; width: min(570px, 75%); margin-left: auto; margin-right: auto }
+    .content-bottom .btn-next:not(.btn-dev-3), .content-bottom .btn-next-fake:not(.btn-dev-3) { position: fixed; left: calc(50% - 260px); bottom: 10px; width: 530px }
+    .content-bottom .under-button:not(.btn-dev-3) { position: fixed; height: 4em; left: 0; bottom: 0; width: 100% }
+}
+/* Mobile */
+@media (max-width: 1024px){
+    .image-left { width: 100%; height: 40% }
+    .content-right { width: 100%; min-height: 60% }
+    .content-container { width: 100% }
+    .option { margin: 6px 0 }
+    .layout-column, .layout-row { flex-direction: column }
+    .btn-next:not(.btn-dev-3), .btn-next-fake:not(.btn-dev-3) { position: fixed; left: 5%; bottom: 10px; width: 90% }
+    .under-button:not(.btn-dev-3) { position: fixed; height: 4em; left: 0; bottom: 0; width: 100% }
+}
+@media (orientation: portrait){
+    .image-left { width: 100%; height: 40% }
+    .content-right { width: 100%; min-height: 60% }
+    .content-container { width: 100% }
+    .option { margin: 6px 0 }
+    .layout-column, .layout-row { flex-direction: column }
+    .btn-next:not(.btn-dev-3), .btn-next-fake:not(.btn-dev-3) { position: fixed; left: 5%; bottom: 10px; width: 90% }
+    .under-button:not(.btn-dev-3) { position: fixed; height: 4em; left: 0; bottom: 0; width: 100% }
+}
+
+/* Loading spinner */
+
+.loading-spinner { animation: 1s rotate360 infinite linear; display: inline-block; width: 24px; text-align: center }
+@keyframes rotate360 { from {transform: rotate(0deg)} to { transform: rotate(360deg) } }
